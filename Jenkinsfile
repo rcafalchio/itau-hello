@@ -11,18 +11,9 @@ pipeline {
                     'check': {
                         sh "gradle check --stacktrace"
                     },
-                    // 'echo': {
-                    //     echo "Executing Unit Tests"
-                    // },
                     'env': {
                         sh 'printenv'
                     }
-                    // 'GRADLE_HOME': {
-                    //     echo "GRADLE_HOME " $GRADLE_HOME
-                    // },
-                    // 'PATH': {
-                    //     echo "PATH " $PATH
-                    // }
                 )
             }
         }
@@ -39,6 +30,14 @@ pipeline {
             steps {
                 script {
                     docker.build("itau-hello")
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                'echo': {
+                    echo "Executing Deploy on Dev"
                 }
             }
         }
