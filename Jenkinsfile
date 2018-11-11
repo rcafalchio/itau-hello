@@ -13,6 +13,15 @@ pipeline {
                     },
                     'echo': {
                         echo "Executing Unit Tests"
+                    },
+                    'echo': {
+                         echo "ENV " $ENV
+                    },
+                    'echo': {
+                        echo "GRADLE_HOME " $GRADLE_HOME
+                    },
+                    'echo': {
+                        echo "PATH " $PATH
                     }
                 )
             }
