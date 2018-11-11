@@ -25,7 +25,9 @@ pipeline {
             }
         }
         stage('Build image') {
-             def customImage = docker.build("itau-hello:${env.BUILD_ID}")
+            steps {
+                 def customImage = docker.build("itau-hello:${env.BUILD_ID}")
+            }
         }
 
 //        stage('Build image') {
