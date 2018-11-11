@@ -24,6 +24,10 @@ pipeline {
                 sh 'jarFile=`ls build/libs | grep -v original` && mkdir -p deployments && cp build/libs/$jarFile deployments/'
             }
         }
+        stage('Build image') {
+             def customImage = docker.build("itau-hello:${env.BUILD_ID}")
+        }
+
 //        stage('Build image') {
 //            agent { label 'gradle' }
 //            steps {
