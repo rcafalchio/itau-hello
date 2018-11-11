@@ -48,7 +48,7 @@ pipeline {
                 }
             }
         }
-        stage('Dev') {
+        stage('Deploy') {
             agent { label 'gradle' }
             steps {
                 script {
@@ -58,44 +58,6 @@ pipeline {
                             // deployment is triggered by imagestream here
                             openshiftVerifyDeployment depCfg: "demo", namespace: "dev"
                             sh "curl -L http://demo.dev.svc.cluster.local:8080/health"
-                        }
-                    }
-                }
-            }
-        }
-        stage('Staging') {
-            agent { label 'gradle' }
-            steps {
-                script {
-                    openshift.withCluster() {
-                        openshift.tag("dev/demo:latest", "staging/demo:latest")
-                        openshift.withProject('staging') {
-                            def template = readYaml file: 'openshift/demo-template.yml'
-                            openshift.apply(openshift.process(template, "-p", "VERSION=latest"))
-                            // TODO: replace it when https://github.com/openshift/jenkins-client-plugin/issues/84 will be solved
-                            openshiftVerifyDeployment depCfg: "demo", namespace: "staging"
-                        }
-                    }
-                }
-            }
-        }
-        stage('Approve') {
-            agent none
-            steps {
-                input "Does the staging environment look ok ?"
-            }
-        }
-        stage('Prod') {
-            agent { label 'gradle' }
-            steps {
-                script {
-                    openshift.withCluster() {
-                        openshift.tag("staging/demo:latest", "prod/demo:latest")
-                        openshift.withProject('prod') {
-                            def template = readYaml file: 'openshift/demo-template.yml'
-                            openshift.apply(openshift.process(template, "-p", "VERSION=latest"))
-                            // TODO: replace it when https://github.com/openshift/jenkins-client-plugin/issues/84 will be solved
-                            openshiftVerifyDeployment depCfg: "demo", namespace: "prod"
                         }
                     }
                 }
