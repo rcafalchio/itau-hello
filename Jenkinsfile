@@ -15,7 +15,7 @@ pipeline {
                     //     echo "Executing Unit Tests"
                     // },
                     'echo': {
-                         echo "ENV " $ENV
+                        echo ${env.PATH}
                     }
                     // 'GRADLE_HOME': {
                     //     echo "GRADLE_HOME " $GRADLE_HOME
