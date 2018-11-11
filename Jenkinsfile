@@ -1,6 +1,8 @@
-pipeline {
+// pipeline {
 
-    stages {
+    node {
+
+  //  stages {
 
         stage('Test') {
 
@@ -69,5 +71,5 @@ pipeline {
 //                }
 //            }
 //        }
-    }
+    // }
 }
