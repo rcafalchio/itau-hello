@@ -1,7 +1,4 @@
-//pipeline {
-node {
-    
-    def customImage
+pipeline {
 
     stages {
 
@@ -27,7 +24,9 @@ node {
             }
         }
         stage('Build image') {
-            customImage = docker.build("itau-hello")
+            node {
+                docker.build("itau-hello")
+            }
         }
 
 //        stage('Build image') {
