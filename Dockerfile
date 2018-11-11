@@ -1,5 +1,5 @@
 FROM openjdk:latest
-EXPOSE 8080
+EXPOSE 8000
 RUN mkdir /opt/application
-COPY ./build/libs/gs-spring-boot-0.1.0.jar /opt/application
-CMD ["java","-jar","/opt/application/gs-spring-boot-0.1.0.jar"]
+COPY ./build/libs/itau-hello*.jar /opt/application/itau-hello.jar
+CMD ["java","-jar","/opt/application/itau-hello.jar"]

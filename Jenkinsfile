@@ -25,18 +25,7 @@ pipeline {
             }
         }
         stage('Build image') {
-            agent {
-                dockerfile {
-                        filename 'Dockerfile.build'
-                        dir 'build'
-                        label 'my-defined-label'
-                        //additionalBuildArgs  '--build-arg version=1.0.2'
-                        args '-v /tmp:/tmp'
-                }
-            }
-//            steps {
-//                 def customImage = docker.build("itau-hello:${env.BUILD_ID}")
-//            }
+            def customImage = docker.build("itau-hello")
         }
 
 //        stage('Build image') {
