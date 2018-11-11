@@ -14,15 +14,6 @@ pipeline {
                     'echo': {
                         echo "Executing Unit Tests"
                     }
-                    'echo': {
-                         echo "ENV " $ENV
-                    }
-                    'echo': {
-                        echo "GRADLE_HOME " $GRADLE_HOME
-                    }
-                    'echo': {
-                        echo "PATH " $PATH
-                    }
                 )
             }
         }
@@ -84,4 +75,4 @@ pipeline {
 //            }
 //        }
     
-} > git rev-list --no-walk 29f9614a4797c12a73078ba6a90dd077936cc3df # timeout=10
+}
