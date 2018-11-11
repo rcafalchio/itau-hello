@@ -11,18 +11,18 @@ pipeline {
                     'check': {
                         sh "gradle check --stacktrace"
                     },
+                    // 'echo': {
+                    //     echo "Executing Unit Tests"
+                    // },
                     'echo': {
-                        echo "Executing Unit Tests"
-                    },
-                    'ENV': {
                          echo "ENV " $ENV
-                    },
-                    'GRADLE_HOME': {
-                        echo "GRADLE_HOME " $GRADLE_HOME
-                    },
-                    'PATH': {
-                        echo "PATH " $PATH
                     }
+                    // 'GRADLE_HOME': {
+                    //     echo "GRADLE_HOME " $GRADLE_HOME
+                    // },
+                    // 'PATH': {
+                    //     echo "PATH " $PATH
+                    // }
                 )
             }
         }
