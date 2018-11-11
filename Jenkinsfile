@@ -1,8 +1,6 @@
-// pipeline {
+pipeline {
 
-    node {
-
-  //  stages {
+    stages {
 
         stage('Test') {
 
@@ -26,9 +24,9 @@
             }
         }
         stage('Build image') {
-            node {
-                docker.build("itau-hello")
-            }
+
+            docker.build("itau-hello")
+
         }
 
 //        stage('Build image') {
@@ -71,5 +69,5 @@
 //                }
 //            }
 //        }
-    // }
+    }
 }
