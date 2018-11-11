@@ -24,9 +24,10 @@ pipeline {
             }
         }
         stage('Build image') {
-
-            docker.build("itau-hello")
-
+        steps {
+            script {
+                docker.build("itau-hello")
+            }
         }
 
 //        stage('Build image') {
