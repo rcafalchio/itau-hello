@@ -6,7 +6,7 @@ pipeline {
             //agent { label 'gradle' }
             steps {
                 checkout scm
-                sh "gradle bootRepackage --stacktrace"
+                sh "gradle build"
                 sh 'jarFile=`ls build/libs | grep -v original` && mkdir -p ocp/deployments && cp build/libs/$jarFile ocp/deployments/'
             }
         }
