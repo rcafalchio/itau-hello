@@ -1,9 +1,9 @@
 pipeline {
-    agent none
+    agent any
 
     stages {
         stage('Build') {
-            agent { label 'gradle' }
+            //agent { label 'gradle' }
             steps {
                 checkout scm
                 sh "gradle bootRepackage --stacktrace"
