@@ -13,6 +13,9 @@ pipeline {
                     },
                     'env': {
                         sh 'printenv'
+                    },
+                    'echo': {
+                        echo "Executing Deploy on Dev"
                     }
                 )
             }
@@ -36,9 +39,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                'echo': {
-                    echo "Executing Deploy on Dev"
-                }
+                parallel(
+                    'echo': {
+                        echo "Executing Deploy on Dev"
+                    }
+                )
             }
         }
     }
