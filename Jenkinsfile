@@ -12,7 +12,7 @@ pipeline {
                         sh "gradle check --stacktrace"
                     },
                     'echo': {
-                        echo "ok in tests"
+                        echo "Executing Unit Tests"
                     }
                 )
             }
