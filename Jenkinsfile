@@ -4,7 +4,7 @@ pipeline {
     stages {
 
         stage('Test') {
-            agent { label 'gradle' }
+
             steps {
                 parallel(
                     'check': {
@@ -17,7 +17,7 @@ pipeline {
             }
         }
         stage('Build') {
-            agent { label 'gradle' }
+
             steps {
                 checkout scm
                 sh "gradle bootJar"
