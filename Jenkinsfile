@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+
+    def customImage
 
     stages {
 
@@ -25,7 +26,7 @@ pipeline {
             }
         }
         stage('Build image') {
-            def customImage = docker.build("itau-hello")
+            customImage = docker.build("itau-hello")
         }
 
 //        stage('Build image') {
