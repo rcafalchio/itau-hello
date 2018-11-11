@@ -1,5 +1,6 @@
-pipeline {
-
+//pipeline {
+node {
+    
     def customImage
 
     stages {
