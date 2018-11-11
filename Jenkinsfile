@@ -21,7 +21,7 @@ pipeline {
             steps {
                 checkout scm
                 sh "gradle bootJar"
-                sh 'jarFile=`ls build/libs | grep -v original` && mkdir -p deployments ` && cp build/libs/$jarFile deployments/'
+                sh 'jarFile=`ls build/libs | grep -v original` && mkdir -p deployments && cp build/libs/$jarFile deployments/'
             }
         }
 //        stage('Build image') {
