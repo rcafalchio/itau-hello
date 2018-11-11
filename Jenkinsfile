@@ -8,7 +8,7 @@ pipeline {
             steps {
                 parallel(
                     'check': {
-                        sh "gradle test --stacktrace"
+                        sh "gradle check --stacktrace"
                     },
                     'echo': {
                         echo "ok in tests"
@@ -20,10 +20,10 @@ pipeline {
             agent { label 'gradle' }
             steps {
                 checkout scm
-                sh "gradle build"
+                sh "gradle bootJar"
                 sh 'jarFile=`ls build/libs | grep -v original`
-                 && mkdir -p ocp/deployments `
-                 && cp build/libs/$jarFile ocp/deployments/'
+                 && mkdir -p deployments `
+                 && cp build/libs/$jarFile deployments/'
             }
         }
 #        stage('Build image') {
