@@ -24,12 +24,13 @@ pipeline {
             }
         }
         stage('Build image') {
-        steps {
-            script {
-                docker.build("itau-hello")
+            steps {
+                script {
+                    docker.build("itau-hello")
+                }
             }
         }
-
+    }
 //        stage('Build image') {
 //            agent { label 'gradle' }
 //            steps {
@@ -70,5 +71,5 @@ pipeline {
 //                }
 //            }
 //        }
-    }
+    
 }
